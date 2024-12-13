@@ -1,0 +1,16 @@
+server:
+  port: 8083
+
+spring:
+  application:
+  name: stock-service-kafka
+  kafka:
+    topic:
+      name: orderTopic
+    consumer:
+      bootstrap-servers: localhost:9092 # Kafka broker address
+      group-id: stockGroup # Consumer group ID
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties.spring.json.trusted.packages: "*"
